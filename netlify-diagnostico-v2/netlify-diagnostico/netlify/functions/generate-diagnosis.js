@@ -10,34 +10,19 @@ const QUESTION_LABELS = {
   p9: '¿Qué tan sólido es el conocimiento que tiene tu equipo sobre sus productos o servicios para argumentar con seguridad?',
   p10: '¿Cómo reacciona normalmente tu equipo frente a las objeciones del cliente?',
   p11: '¿Qué tan preparado está tu equipo para utilizar técnicas de manejo de objeciones?',
-  p12: '¿Qué tan bien detecta tu equipo las señales de cierre y avanza con seguridad hacia el siguiente paso o el cierre final?'
+  p12: '¿Qué tan bien detecta tu equipo las señales de cierre y avanza con seguridad hacia el siguiente paso o el cierre final?',
 };
 
 const SCORE_MAP = {
-  p1: {
-    'Muy consistente': 4,
-    'Bastante consistente': 3,
-    'Poco consistente': 2,
-    'Muy inconsistente': 1,
-  },
+  p1: { 'Muy consistente': 4, 'Bastante consistente': 3, 'Poco consistente': 2, 'Muy inconsistente': 1 },
   p2: {
     'Logra romper el hielo con naturalidad y criterio': 4,
     'A veces conecta, pero depende del vendedor': 3,
     'Tiende a ir directo al producto sin generar vínculo': 2,
     'Pierde conexión desde el inicio': 1,
   },
-  p3: {
-    'Muy presente': 4,
-    'Presente de forma irregular': 3,
-    'Poco presente': 2,
-    'Casi ausente': 1,
-  },
-  p4: {
-    'Muy bien': 4,
-    'Bien, pero con brechas': 3,
-    'Con dificultad': 2,
-    'Muy débilmente': 1,
-  },
+  p3: { 'Muy presente': 4, 'Presente de forma irregular': 3, 'Poco presente': 2, 'Casi ausente': 1 },
+  p4: { 'Muy bien': 4, 'Bien, pero con brechas': 3, 'Con dificultad': 2, 'Muy débilmente': 1 },
   p5: {
     'El equipo comprende bien al cliente antes de proponer': 4,
     'Hace preguntas, pero no profundiza lo suficiente': 3,
@@ -50,42 +35,22 @@ const SCORE_MAP = {
     'Más orientado al producto': 2,
     'Casi totalmente orientado al producto': 1,
   },
-  p7: {
-    'Muy bien': 4,
-    'Bien, aunque no siempre con precisión': 3,
-    'De forma débil': 2,
-    'Muy débilmente': 1,
-  },
+  p7: { 'Muy bien': 4, 'Bien, aunque no siempre con precisión': 3, 'De forma débil': 2, 'Muy débilmente': 1 },
   p8: {
     'Sostiene el valor con argumentos claros': 4,
     'A veces defiende valor, pero sin mucha solidez': 3,
     'Se debilita y entra rápido en precio': 2,
     'Depende casi solo del descuento o la rebaja': 1,
   },
-  p9: {
-    'Muy sólido': 4,
-    'Aceptable': 3,
-    'Limitado': 2,
-    'Muy débil': 1,
-  },
+  p9: { 'Muy sólido': 4, 'Aceptable': 3, 'Limitado': 2, 'Muy débil': 1 },
   p10: {
     'Las acepta, explora y gestiona con criterio': 4,
     'Las maneja de forma aceptable, pero inconsistente': 3,
     'Tiende a responder de forma defensiva o apurada': 2,
     'Le cuesta mucho gestionarlas': 1,
   },
-  p11: {
-    'Muy preparado': 4,
-    'Medianamente preparado': 3,
-    'Poco preparado': 2,
-    'Nada preparado': 1,
-  },
-  p12: {
-    'Muy bien': 4,
-    'Bien, pero con dudas': 3,
-    'Con dificultad': 2,
-    'Muy mal': 1,
-  },
+  p11: { 'Muy preparado': 4, 'Medianamente preparado': 3, 'Poco preparado': 2, 'Nada preparado': 1 },
+  p12: { 'Muy bien': 4, 'Bien, pero con dudas': 3, 'Con dificultad': 2, 'Muy mal': 1 },
 };
 
 function average(values) {
@@ -93,13 +58,12 @@ function average(values) {
 }
 
 function getScores(payload) {
-  const scores = {
+  return {
     conexion: average([payload.p1, payload.p2, payload.p3].map((key, i) => SCORE_MAP[`p${i + 1}`][key] || 1)),
     deteccion: average([payload.p4, payload.p5, payload.p6].map((key, i) => SCORE_MAP[`p${i + 4}`][key] || 1)),
     solucion: average([payload.p7, payload.p8, payload.p9].map((key, i) => SCORE_MAP[`p${i + 7}`][key] || 1)),
     cierre: average([payload.p10, payload.p11, payload.p12].map((key, i) => SCORE_MAP[`p${i + 10}`][key] || 1)),
   };
-  return scores;
 }
 
 function maturityLevelFromScores(scores) {
@@ -153,6 +117,10 @@ Reglas:
 - Interpreta patrones, brechas y riesgos.
 - Mantén tono profesional, claro y consultivo.
 - Sé concreto y útil, sin rodeos ni tecnicismos innecesarios.
+- En la sección 7, plantea exactamente tres frentes de trabajo con nombre corto y una breve descripción para cada frente.
+- Cierra la sección 7 con una recomendación breve que invite a agendar una reunión para orientar un plan de talleres o programas.
+- No incluyas frases dirigidas al consultor ni mensajes internos.
+- No escribas “Usa este diagnóstico como insumo para una conversación consultiva...” ni nada parecido.
 - Menciona venta consultiva, foco en valor y habilidades blandas/comerciales cuando corresponda.`;
 }
 
@@ -185,12 +153,12 @@ export default async (req) => {
       },
       body: JSON.stringify({
         model: 'gpt-5.4-mini',
-        temperature: 0.4,
-        max_completion_tokens: 1200,
+        temperature: 0.35,
+        max_completion_tokens: 1300,
         messages: [
           {
             role: 'system',
-            content: 'Eres un consultor comercial experto en venta consultiva. Elaboras diagnósticos ejecutivos, claros y accionables para líderes comerciales.',
+            content: 'Eres un consultor comercial experto en venta consultiva. Elaboras diagnósticos ejecutivos, claros, accionables y presentables para líderes comerciales.',
           },
           {
             role: 'user',
