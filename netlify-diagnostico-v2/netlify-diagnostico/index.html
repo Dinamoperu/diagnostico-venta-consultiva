@@ -4,16 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diagnóstico Premium de Venta Consultiva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo-dinamo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="layout">
     <aside class="sidebar">
-      <div class="brand">Dínamo Consultores</div>
+      <div class="brand-row">
+        <img src="logo-dinamo.png" alt="Logo Dínamo" class="brand-logo" />
+        <div>
+          <div class="brand">Dínamo Consultores</div>
+          <div class="brand-sub">Diagnóstico comercial</div>
+        </div>
+      </div>
+
       <h1>Diagnóstico Premium de Venta Consultiva</h1>
       <p class="lead">
-        Descubre qué está frenando hoy tus resultados comerciales y qué competencias
-        necesita fortalecer tu equipo para vender con mayor confianza, criterio y efectividad.
+        Identifica con mayor claridad qué está frenando hoy el desempeño comercial de tu equipo
+        y qué competencias conviene reforzar para vender con más criterio, consistencia y valor.
       </p>
       <p class="strong">Ideal para líderes comerciales, gerentes, jefes de ventas y equipos consultivos.</p>
 
@@ -30,196 +41,230 @@
 
     <section class="content">
       <div class="card" id="form-card">
-        <div class="stepbar">
-          <div class="step active">1. Datos</div>
-          <div class="step">2. Test</div>
-          <div class="step">3. Cierre</div>
+        <div class="top-strip">
+          <div>
+            <p class="eyebrow">Diagnóstico online</p>
+            <h2 class="form-title">Evalúa la madurez comercial de tu equipo</h2>
+          </div>
+          <div class="stepbar">
+            <div class="step active">1. Datos</div>
+            <div class="step">2. Evaluación</div>
+            <div class="step">3. Cierre</div>
+          </div>
         </div>
 
         <form id="diagnosis-form">
           <section class="form-step active" data-step="1">
-            <h2>Datos del líder comercial</h2>
+            <div class="section-head">
+              <h3>Datos del líder comercial</h3>
+              <p>Completa tus datos para personalizar el diagnóstico.</p>
+            </div>
             <div class="grid">
               <label>
                 <span>Nombre completo</span>
-                <input name="nombreCompleto" required />
+                <input name="nombreCompleto" required placeholder="Ejemplo: Romel Andrade" />
               </label>
               <label>
                 <span>Correo corporativo</span>
-                <input type="email" name="correoCorporativo" required />
+                <input type="email" name="correoCorporativo" required placeholder="nombre@empresa.com" />
               </label>
               <label>
                 <span>Empresa</span>
-                <input name="empresa" required />
+                <input name="empresa" required placeholder="Nombre de la empresa" />
               </label>
               <label>
                 <span>Cargo</span>
-                <input name="cargo" required />
+                <input name="cargo" required placeholder="Ejemplo: Director Comercial" />
               </label>
               <label class="full">
                 <span>Sector de la empresa</span>
-                <select name="sectorEmpresa" required>
-                  <option value="">Selecciona una opción</option>
-                  <option>Banca / Finanzas</option>
-                  <option>Seguros</option>
-                  <option>Retail</option>
-                  <option>Salud</option>
-                  <option>Educación</option>
-                  <option>Servicios</option>
-                  <option>Industria</option>
-                  <option>Minería</option>
-                  <option>Tecnología</option>
-                  <option>Otro</option>
-                </select>
+                <div class="choice-grid compact" data-name="sectorEmpresa" data-required="true">
+                  <button type="button" class="choice-card" data-value="Banca / Finanzas">Banca / Finanzas</button>
+                  <button type="button" class="choice-card" data-value="Seguros">Seguros</button>
+                  <button type="button" class="choice-card" data-value="Retail">Retail</button>
+                  <button type="button" class="choice-card" data-value="Salud">Salud</button>
+                  <button type="button" class="choice-card" data-value="Educación">Educación</button>
+                  <button type="button" class="choice-card" data-value="Servicios">Servicios</button>
+                  <button type="button" class="choice-card" data-value="Industria">Industria</button>
+                  <button type="button" class="choice-card" data-value="Minería">Minería</button>
+                  <button type="button" class="choice-card" data-value="Tecnología">Tecnología</button>
+                  <button type="button" class="choice-card" data-value="Otro">Otro</button>
+                </div>
+                <input type="hidden" name="sectorEmpresa" required />
               </label>
             </div>
           </section>
 
           <section class="form-step" data-step="2">
-            <h2>Test de madurez comercial</h2>
-            <p class="helper">Selecciona la opción que mejor describe la realidad actual de tu equipo.</p>
-
-            <div class="question-group">
-              <h3>Conexión con el cliente</h3>
-              <label><span>1. ¿Qué tan consistente es tu equipo al generar una primera impresión profesional y de confianza en el primer contacto?</span>
-                <select name="p1" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy consistente</option>
-                  <option>Bastante consistente</option>
-                  <option>Poco consistente</option>
-                  <option>Muy inconsistente</option>
-                </select>
-              </label>
-              <label><span>2. Cuando un cliente muestra distancia o frialdad al inicio, ¿qué suele hacer tu equipo?</span>
-                <select name="p2" required>
-                  <option value="">Selecciona</option>
-                  <option>Logra romper el hielo con naturalidad y criterio</option>
-                  <option>A veces conecta, pero depende del vendedor</option>
-                  <option>Tiende a ir directo al producto sin generar vínculo</option>
-                  <option>Pierde conexión desde el inicio</option>
-                </select>
-              </label>
-              <label><span>3. ¿Qué tan presente está hoy la escucha activa en las conversaciones comerciales de tu equipo?</span>
-                <select name="p3" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy presente</option>
-                  <option>Presente de forma irregular</option>
-                  <option>Poco presente</option>
-                  <option>Casi ausente</option>
-                </select>
-              </label>
+            <div class="section-head">
+              <h3>Evaluación de madurez comercial</h3>
+              <p>Marca la opción que mejor refleja la realidad actual de tu equipo.</p>
             </div>
 
             <div class="question-group">
-              <h3>Detección de necesidades reales</h3>
-              <label><span>4. ¿Qué tan bien formula tu equipo preguntas con propósito para entender la situación real del cliente?</span>
-                <select name="p4" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy bien</option>
-                  <option>Bien, pero con brechas</option>
-                  <option>Con dificultad</option>
-                  <option>Muy débilmente</option>
-                </select>
-              </label>
-              <label><span>5. ¿Qué ocurre con más frecuencia en las reuniones o llamadas comerciales?</span>
-                <select name="p5" required>
-                  <option value="">Selecciona</option>
-                  <option>El equipo comprende bien al cliente antes de proponer</option>
-                  <option>Hace preguntas, pero no profundiza lo suficiente</option>
-                  <option>Se enfoca muy rápido en explicar el producto</option>
-                  <option>La conversación carece de estructura clara</option>
-                </select>
-              </label>
-              <label><span>6. ¿Qué tan orientado está tu equipo a entender a la persona y su contexto antes que al producto mismo?</span>
-                <select name="p6" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy orientado a la persona</option>
-                  <option>Moderadamente orientado</option>
-                  <option>Más orientado al producto</option>
-                  <option>Casi totalmente orientado al producto</option>
-                </select>
-              </label>
+              <h4>Conexión con el cliente</h4>
+              <div class="question-block">
+                <p class="question-title">1. ¿Qué tan consistente es tu equipo al generar una primera impresión profesional y de confianza en el primer contacto?</p>
+                <div class="choice-grid" data-name="p1" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy consistente">Muy consistente</button>
+                  <button type="button" class="choice-card" data-value="Bastante consistente">Bastante consistente</button>
+                  <button type="button" class="choice-card" data-value="Poco consistente">Poco consistente</button>
+                  <button type="button" class="choice-card" data-value="Muy inconsistente">Muy inconsistente</button>
+                </div>
+                <input type="hidden" name="p1" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">2. Cuando un cliente muestra distancia o frialdad al inicio, ¿qué suele hacer tu equipo?</p>
+                <div class="choice-grid" data-name="p2" data-required="true">
+                  <button type="button" class="choice-card" data-value="Logra romper el hielo con naturalidad y criterio">Logra romper el hielo con naturalidad y criterio</button>
+                  <button type="button" class="choice-card" data-value="A veces conecta, pero depende del vendedor">A veces conecta, pero depende del vendedor</button>
+                  <button type="button" class="choice-card" data-value="Tiende a ir directo al producto sin generar vínculo">Tiende a ir directo al producto sin generar vínculo</button>
+                  <button type="button" class="choice-card" data-value="Pierde conexión desde el inicio">Pierde conexión desde el inicio</button>
+                </div>
+                <input type="hidden" name="p2" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">3. ¿Qué tan presente está hoy la escucha activa en las conversaciones comerciales de tu equipo?</p>
+                <div class="choice-grid" data-name="p3" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy presente">Muy presente</button>
+                  <button type="button" class="choice-card" data-value="Presente de forma irregular">Presente de forma irregular</button>
+                  <button type="button" class="choice-card" data-value="Poco presente">Poco presente</button>
+                  <button type="button" class="choice-card" data-value="Casi ausente">Casi ausente</button>
+                </div>
+                <input type="hidden" name="p3" required />
+              </div>
             </div>
 
             <div class="question-group">
-              <h3>Oferta de soluciones específicas</h3>
-              <label><span>7. ¿Qué tan bien conecta tu equipo lo que ofrece con la necesidad específica del cliente?</span>
-                <select name="p7" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy bien</option>
-                  <option>Bien, aunque no siempre con precisión</option>
-                  <option>De forma débil</option>
-                  <option>Muy débilmente</option>
-                </select>
-              </label>
-              <label><span>8. Cuando el cliente compara precio, ¿qué hace normalmente tu equipo?</span>
-                <select name="p8" required>
-                  <option value="">Selecciona</option>
-                  <option>Sostiene el valor con argumentos claros</option>
-                  <option>A veces defiende valor, pero sin mucha solidez</option>
-                  <option>Se debilita y entra rápido en precio</option>
-                  <option>Depende casi solo del descuento o la rebaja</option>
-                </select>
-              </label>
-              <label><span>9. ¿Qué tan sólido es el conocimiento que tiene tu equipo sobre sus productos o servicios para argumentar con seguridad?</span>
-                <select name="p9" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy sólido</option>
-                  <option>Aceptable</option>
-                  <option>Limitado</option>
-                  <option>Muy débil</option>
-                </select>
-              </label>
+              <h4>Detección de necesidades reales</h4>
+              <div class="question-block">
+                <p class="question-title">4. ¿Qué tan bien formula tu equipo preguntas con propósito para entender la situación real del cliente?</p>
+                <div class="choice-grid" data-name="p4" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy bien">Muy bien</button>
+                  <button type="button" class="choice-card" data-value="Bien, pero con brechas">Bien, pero con brechas</button>
+                  <button type="button" class="choice-card" data-value="Con dificultad">Con dificultad</button>
+                  <button type="button" class="choice-card" data-value="Muy débilmente">Muy débilmente</button>
+                </div>
+                <input type="hidden" name="p4" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">5. ¿Qué ocurre con más frecuencia en las reuniones o llamadas comerciales?</p>
+                <div class="choice-grid" data-name="p5" data-required="true">
+                  <button type="button" class="choice-card" data-value="El equipo comprende bien al cliente antes de proponer">El equipo comprende bien al cliente antes de proponer</button>
+                  <button type="button" class="choice-card" data-value="Hace preguntas, pero no profundiza lo suficiente">Hace preguntas, pero no profundiza lo suficiente</button>
+                  <button type="button" class="choice-card" data-value="Se enfoca muy rápido en explicar el producto">Se enfoca muy rápido en explicar el producto</button>
+                  <button type="button" class="choice-card" data-value="La conversación carece de estructura clara">La conversación carece de estructura clara</button>
+                </div>
+                <input type="hidden" name="p5" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">6. ¿Qué tan orientado está tu equipo a entender a la persona y su contexto antes que al producto mismo?</p>
+                <div class="choice-grid" data-name="p6" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy orientado a la persona">Muy orientado a la persona</button>
+                  <button type="button" class="choice-card" data-value="Moderadamente orientado">Moderadamente orientado</button>
+                  <button type="button" class="choice-card" data-value="Más orientado al producto">Más orientado al producto</button>
+                  <button type="button" class="choice-card" data-value="Casi totalmente orientado al producto">Casi totalmente orientado al producto</button>
+                </div>
+                <input type="hidden" name="p6" required />
+              </div>
             </div>
 
             <div class="question-group">
-              <h3>Cierre efectivo</h3>
-              <label><span>10. ¿Cómo reacciona normalmente tu equipo frente a las objeciones del cliente?</span>
-                <select name="p10" required>
-                  <option value="">Selecciona</option>
-                  <option>Las acepta, explora y gestiona con criterio</option>
-                  <option>Las maneja de forma aceptable, pero inconsistente</option>
-                  <option>Tiende a responder de forma defensiva o apurada</option>
-                  <option>Le cuesta mucho gestionarlas</option>
-                </select>
-              </label>
-              <label><span>11. ¿Qué tan preparado está tu equipo para utilizar técnicas de manejo de objeciones?</span>
-                <select name="p11" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy preparado</option>
-                  <option>Medianamente preparado</option>
-                  <option>Poco preparado</option>
-                  <option>Nada preparado</option>
-                </select>
-              </label>
-              <label><span>12. ¿Qué tan bien detecta tu equipo las señales de cierre y avanza con seguridad hacia el siguiente paso o el cierre final?</span>
-                <select name="p12" required>
-                  <option value="">Selecciona</option>
-                  <option>Muy bien</option>
-                  <option>Bien, pero con dudas</option>
-                  <option>Con dificultad</option>
-                  <option>Muy mal</option>
-                </select>
-              </label>
+              <h4>Oferta de soluciones específicas</h4>
+              <div class="question-block">
+                <p class="question-title">7. ¿Qué tan bien conecta tu equipo lo que ofrece con la necesidad específica del cliente?</p>
+                <div class="choice-grid" data-name="p7" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy bien">Muy bien</button>
+                  <button type="button" class="choice-card" data-value="Bien, aunque no siempre con precisión">Bien, aunque no siempre con precisión</button>
+                  <button type="button" class="choice-card" data-value="De forma débil">De forma débil</button>
+                  <button type="button" class="choice-card" data-value="Muy débilmente">Muy débilmente</button>
+                </div>
+                <input type="hidden" name="p7" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">8. Cuando el cliente compara precio, ¿qué hace normalmente tu equipo?</p>
+                <div class="choice-grid" data-name="p8" data-required="true">
+                  <button type="button" class="choice-card" data-value="Sostiene el valor con argumentos claros">Sostiene el valor con argumentos claros</button>
+                  <button type="button" class="choice-card" data-value="A veces defiende valor, pero sin mucha solidez">A veces defiende valor, pero sin mucha solidez</button>
+                  <button type="button" class="choice-card" data-value="Se debilita y entra rápido en precio">Se debilita y entra rápido en precio</button>
+                  <button type="button" class="choice-card" data-value="Depende casi solo del descuento o la rebaja">Depende casi solo del descuento o la rebaja</button>
+                </div>
+                <input type="hidden" name="p8" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">9. ¿Qué tan sólido es el conocimiento que tiene tu equipo sobre sus productos o servicios para argumentar con seguridad?</p>
+                <div class="choice-grid" data-name="p9" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy sólido">Muy sólido</button>
+                  <button type="button" class="choice-card" data-value="Aceptable">Aceptable</button>
+                  <button type="button" class="choice-card" data-value="Limitado">Limitado</button>
+                  <button type="button" class="choice-card" data-value="Muy débil">Muy débil</button>
+                </div>
+                <input type="hidden" name="p9" required />
+              </div>
+            </div>
+
+            <div class="question-group">
+              <h4>Cierre efectivo</h4>
+              <div class="question-block">
+                <p class="question-title">10. ¿Cómo reacciona normalmente tu equipo frente a las objeciones del cliente?</p>
+                <div class="choice-grid" data-name="p10" data-required="true">
+                  <button type="button" class="choice-card" data-value="Las acepta, explora y gestiona con criterio">Las acepta, explora y gestiona con criterio</button>
+                  <button type="button" class="choice-card" data-value="Las maneja de forma aceptable, pero inconsistente">Las maneja de forma aceptable, pero inconsistente</button>
+                  <button type="button" class="choice-card" data-value="Tiende a responder de forma defensiva o apurada">Tiende a responder de forma defensiva o apurada</button>
+                  <button type="button" class="choice-card" data-value="Le cuesta mucho gestionarlas">Le cuesta mucho gestionarlas</button>
+                </div>
+                <input type="hidden" name="p10" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">11. ¿Qué tan preparado está tu equipo para utilizar técnicas de manejo de objeciones?</p>
+                <div class="choice-grid" data-name="p11" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy preparado">Muy preparado</button>
+                  <button type="button" class="choice-card" data-value="Medianamente preparado">Medianamente preparado</button>
+                  <button type="button" class="choice-card" data-value="Poco preparado">Poco preparado</button>
+                  <button type="button" class="choice-card" data-value="Nada preparado">Nada preparado</button>
+                </div>
+                <input type="hidden" name="p11" required />
+              </div>
+
+              <div class="question-block">
+                <p class="question-title">12. ¿Qué tan bien detecta tu equipo las señales de cierre y avanza con seguridad hacia el siguiente paso o el cierre final?</p>
+                <div class="choice-grid" data-name="p12" data-required="true">
+                  <button type="button" class="choice-card" data-value="Muy bien">Muy bien</button>
+                  <button type="button" class="choice-card" data-value="Bien, pero con dudas">Bien, pero con dudas</button>
+                  <button type="button" class="choice-card" data-value="Con dificultad">Con dificultad</button>
+                  <button type="button" class="choice-card" data-value="Muy mal">Muy mal</button>
+                </div>
+                <input type="hidden" name="p12" required />
+              </div>
             </div>
           </section>
 
           <section class="form-step" data-step="3">
-            <h2>Cierre del diagnóstico</h2>
+            <div class="section-head">
+              <h3>Cierre del diagnóstico</h3>
+              <p>Cuéntanos cuál es hoy el principal reto comercial que percibes.</p>
+            </div>
             <label>
               <span>13. ¿Cuál consideras que es hoy la principal debilidad comercial de tu equipo y qué impacto está teniendo en los resultados?</span>
-              <textarea name="respuestaAbierta" rows="5" required></textarea>
+              <textarea name="respuestaAbierta" rows="5" required placeholder="Ejemplo: Nos cuesta profundizar el diagnóstico comercial, sostener valor y gestionar objeciones con método."></textarea>
             </label>
 
-            <div class="notice">
-              <strong>Lo que recibirás:</strong>
-              <p>Un diagnóstico consultivo de la madurez comercial de tu equipo, con lectura por fases, brechas, riesgos y foco inicial de entrenamiento.</p>
+            <div class="client-note">
+              <h4>¿Qué recibirás al finalizar?</h4>
+              <p>Una lectura inicial de la madurez comercial de tu equipo, con brechas prioritarias, focos de entrenamiento y una recomendación consultiva de desarrollo.</p>
             </div>
           </section>
 
           <div class="actions">
             <button type="button" class="ghost" id="prev-btn">Anterior</button>
-            <button type="button" id="next-btn">Siguiente</button>
+            <button type="button" id="next-btn">Continuar</button>
             <button type="submit" id="submit-btn">Generar diagnóstico</button>
           </div>
         </form>
@@ -227,40 +272,55 @@
 
       <div class="card hidden" id="loading-card">
         <div class="loader"></div>
-        <h2>Estamos analizando la madurez comercial de tu equipo...</h2>
-        <p>Esto puede tardar unos segundos.</p>
+        <h3>Estamos generando tu diagnóstico</h3>
+        <p>Analizando la madurez comercial del equipo para devolverte una lectura clara, útil y accionable.</p>
       </div>
 
       <div class="card hidden" id="result-card">
         <div class="result-header">
           <div>
             <p class="eyebrow">Diagnóstico generado</p>
-            <h2 id="result-title">Resultado</h2>
+            <h2 id="result-title">Resultado del diagnóstico</h2>
           </div>
-          <button class="ghost" id="restart-btn">Nuevo diagnóstico</button>
+          <button type="button" class="ghost" id="restart-btn">Nuevo diagnóstico</button>
         </div>
 
-        <div class="chart-wrapper">
-          <canvas id="maturity-chart" width="560" height="260"></canvas>
+        <div class="summary-grid">
+          <div class="chart-panel">
+            <div class="panel-head">
+              <h3>Lectura por frente comercial</h3>
+              <p>Vista resumida del desempeño actual por fase.</p>
+            </div>
+            <div id="maturity-chart" class="chart-svg" aria-label="Gráfico de madurez por fase"></div>
+          </div>
+
+          <div class="score-panel">
+            <div class="score-card">
+              <span class="score-label">Nivel de madurez</span>
+              <span class="badge" id="maturity-badge">—</span>
+            </div>
+            <div class="mini-legend">
+              <div><span class="dot dot-1"></span> Conexión</div>
+              <div><span class="dot dot-2"></span> Detección</div>
+              <div><span class="dot dot-3"></span> Solución</div>
+              <div><span class="dot dot-4"></span> Cierre</div>
+            </div>
+          </div>
         </div>
 
-        <div class="meter-row">
-          <span>Nivel de madurez:</span>
-          <strong id="maturity-badge" class="badge">—</strong>
-        </div>
+        <div class="result-body" id="result-body"></div>
 
-        <article id="result-body" class="result-body"></article>
-
-        <div class="cta-box">
-          <h3>Siguiente paso recomendado</h3>
-          <p>Usa este diagnóstico como insumo para una conversación consultiva con el cliente o para abrir una reunión comercial.</p>
+        <div class="meeting-cta">
+          <h3>Conversemos sobre el siguiente paso</h3>
+          <p>Puedes agendar una reunión para revisar este diagnóstico y orientarlos en un plan efectivo de talleres o programas, según las brechas y prioridades detectadas.</p>
+          <a class="cta-button" href="mailto:info@dinamoperu.com?subject=Reuni%C3%B3n%20-%20Diagn%C3%B3stico%20Venta%20Consultiva">Agendar una reunión</a>
         </div>
       </div>
 
       <div class="card hidden" id="error-card">
-        <h2>No pudimos generar el diagnóstico</h2>
-        <p id="error-message">Revisa la configuración de Netlify y OpenAI.</p>
-        <button class="ghost" id="retry-btn">Volver al formulario</button>
+        <h3>No pudimos generar el diagnóstico</h3>
+        <p id="error-message"></p>
+        <button type="button" class="ghost" id="retry-btn">Volver al formulario</button>
       </div>
     </section>
   </main>
